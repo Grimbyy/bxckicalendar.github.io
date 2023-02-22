@@ -1,38 +1,77 @@
-.App {
-  text-align: center;
+:root {
+  /* CSS HEX */
+--calendar-green: #73877bff;
+--calendar-dark-green: #29524A;
+--calendar-black: #06070E;
+--calendar-blue: #839788ff;
+--calendar-silver: #bdbbb6ff;
+--calendar-rose: #e5d1d0ff;
+--calendar-pink: #f5e4d7ff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+  background: var(--calendar-rose);
+  height: 100%;
+  width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body, #root, .App {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+h1 { font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif; font-size: 23px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 23px; } h2 { font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif; font-size: 19px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 23px; } h3 { font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif; font-size: 17px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 23px; } p { font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 23px; } blockquote { font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif; font-size: 17px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 23px; } pre { font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif; font-size: 11px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 23px; }
+
+.CalendarHolder {
+  border: 5px solid white;
+  margin: 10px;
+  height: calc(100% - 10px - 20px);
+  width: calc(100% - 10px - 20px);
+  display: inline-block;
 }
 
-.App-link {
-  color: #61dafb;
+.CalendarTitle, .CalendarTitle *, .CalendarSubtitle, .CalendarSubtitle * {
+  color: var(--calendar-dark-green);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.CalendarHolder > .CalendarTitle, .CalendarHolder > .CalendarSubtitle {
+  display: inline-block;
+  --spacing: 10px;
+  padding: 0 var(--spacing);
+  width: calc(50% - calc(var(--spacing) * 2));
+}
+
+.CalendarHolder > .CalendarSubtitle {
+  text-align: right;
+}
+
+.CalendarNav {
+  padding: 10px;
+  display: inline-block;
+  overflow-y: hidden;
+  width: calc(100% - 20px);
+}
+
+.CalendarNav > .DateNavItem {
+  display: inline-block;
+  border: 2px solid white;
+  height: calc(50px - 4px);
+  width: calc(25% - 4px);
+  background: var(--calendar-pink);
+}
+
+.CalendarNav > .DateNavItem::before {
+  content: attr(data-date);
+}
+
+.CalendarHolder > .CalendarConfig {
+  display: inline-block;
+  border: 2px solid white;
+  margin: 10px;
+  height: calc(50px - 4px);
+  width: calc(25% - 4px);
+  background: var(--calendar-pink);
 }

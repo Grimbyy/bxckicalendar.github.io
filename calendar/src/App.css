@@ -13,6 +13,13 @@ html {
   background: var(--calendar-rose);
   height: 100%;
   width: 100%;
+
+  -webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
 }
 
 body, #root, .App {
@@ -49,10 +56,12 @@ h1 { font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif; font-s
 }
 
 .CalendarNav {
-  padding: 10px;
+  margin: 5px;
   display: inline-block;
   overflow-y: hidden;
-  width: calc(100% - 20px);
+  width: calc(100% - 14px);
+  border: 2px solid white;
+  font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif; font-size: 12px; font-style: normal; font-variant: normal;
 }
 
 .CalendarNav > .DateNavItem {
@@ -63,15 +72,42 @@ h1 { font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif; font-s
   background: var(--calendar-pink);
 }
 
+.CalendarNav > .DateNavItem.complete {
+  background: var(--calendar-green);
+}
+
 .CalendarNav > .DateNavItem::before {
+  font-size: 10px;
   content: attr(data-date);
+  position: absolute;
+  padding: 5px;
+}
+
+.CalendarNav > .DateNavItem > a {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  top: 50%;
+  left: 0;
+  width: 50%;
+  text-align: center;
+}
+
+.CalendarNav > .DateNavItem > a[data-goal]::before {
+  content: '\1F945';
+}
+
+.CalendarNav > .DateNavItem > a[data-reminder]::before {
+  content: '\1F514';
 }
 
 .CalendarHolder > .CalendarConfig {
   display: inline-block;
   border: 2px solid white;
-  margin: 10px;
+  margin: 5px;
+  margin-top: -5px;
   height: calc(50px - 4px);
-  width: calc(25% - 4px);
+  width: calc(100% - 14px);
   background: var(--calendar-pink);
 }
